@@ -1,0 +1,155 @@
+@charset "UTF-8";
+
+/* TODO: test this cross-browser (IE) with eot, convert to svg for chrome/opera? */
+@font-face {
+  font-family: 'Montserrat';
+  src: url('fonts/Montserrat-Regular.eot');
+  src: local('Montserrat Regular'),
+       local('Montserrat-Regular'),
+       url('fonts/Montserrat-Regular.ttf') format('truetype'),
+       url('fonts/Montserrat-Regular.svg') format('svg');
+}
+
+@font-face {
+  font-family: 'Varela Round';
+  src: url('fonts/VarelaRound-Regular.eot');
+  src: local('VarelaRound Regular'),
+       local('VarelaRound-Regular'),
+       url('fonts/VarelaRound-Regular.ttf') format('truetype'),
+       url('fonts/VarelaRound-Regular.svg') format('svg');
+}
+
+body,
+html {
+  margin: 0px;
+  border: 0px;
+  padding: 0px;
+  font-family: 'Varela Round', sans-serif;
+  stroke-width: 0px;
+}
+
+/* for the fade-in */
+body {
+  display: none;
+  opacity: 0;
+}
+
+a {
+}
+
+/* for the mailto links, specified as code */
+code {
+  font-family: 'Varela Round', sans-serif;
+}
+
+#vis {
+  position: absolute;
+}
+
+/*
+ * The sponsor logos
+ */
+
+#sponsors {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+.sponsorLogo {
+  position: relative;
+  margin: 0 auto;
+  padding: 4px;
+}
+
+#sponsors img {
+  position:absolute;
+  left:0;
+  -webkit-transition: opacity 0.2s ease-in-out;
+  -moz-transition: opacity 0.2s ease-in-out;
+  -o-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+}
+
+#sponsors img.top {
+  opacity: 0;
+}
+
+#sponsors img.bottom {
+  opacity: 0.5;
+}
+
+#sponsors img.top:hover {
+  opacity: 1;
+}
+
+#wellcomeTrustLogo {
+  width: 160px;
+  height: 42px;
+}
+
+#creativeScotlandLogo {
+  width: 93px;
+  height: 60px;
+  float: left;
+}
+
+#glasgowArtsLogo {
+  width: 64px;
+  height: 53px;
+  float: right;
+}
+
+#triggerLogo {
+  width: 100px;
+  height: 100px;
+}
+
+/*
+ * The visualisation content
+ */
+
+.header {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+}
+
+.content {
+  /* top right bottom left */
+  /*
+  margin: 7% 7% 5% 5%;
+  */
+  /* top/bottom left/right */
+  padding: 0px 6px;
+  display: none;
+  overflow: auto;
+  font-size: 12pt;
+}
+
+h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.content h1 {
+  font-size: 20pt;
+}
+
+.content h2 {
+  font-size: 16pt;
+}
+
+.dynamic_light {
+}
+
+.cross {
+  stroke-width: 3;
+}
+
+/*
+ * The image gallery
+ */
+.figure {
+  text-align: center;
+}

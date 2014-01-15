@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=utf-8>
+    <title>Heliotrope</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+<!-- Prevent scaling --> <!--
+    <meta name="viewport" content="width=device-width;
+        initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+    -->
+    <!-- Eliminate url and button bars if added to home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- Choose how to handle the phone status bar -->
+    <meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <!-- Specify a 320x460 start-up image. -->
+    <link rel="apple-touch-startup-image" href="images/startup.png" />
+    <!-- Choose a 57x57 image for the icon -->
+    <link rel="apple-touch-icon" href="images/icon.png" />
+
+    <script type="text/javascript" src="lib/device/dimensions.js"></script>
+    <script type="text/javascript" src="lib/device/touch.js"></script>
+    <script type="text/javascript" src="lib/device/event.js"></script>
+    <script type="text/javascript" src="lib/geo.js"></script>
+    <script type="text/javascript" src="lib/d3/d3.v2.min.js"></script>
+  </head>
+  <body>
+    <div id="container" ontouchmove="BlockMove(event);">
+      <!-- The content nodes -->
+      <div id="content">
+        $body$
+      </div>
+      <!-- The sponsors logos -->
+      <div id="sponsors">
+        <div id="wellcomeTrustLogo" class="sponsorLogo">
+          <img class = "bottom" src="images/sponsors/wellcometrust_bg.gif" width="160px" height="42px" />
+          <img class = "top"    src="images/sponsors/wellcometrust_fg.gif" width="160px" height="42px" />
+        </div>
+        <div id="creativeScotlandLogo" class="sponsorLogo">
+          <img class = "bottom" src="images/sponsors/creativescotland_bg.gif" width="93px" height="60px" />
+          <img class = "top"    src="images/sponsors/creativescotland_fg.gif" width="93px" height="60px" />
+        </div>
+        <div id="glasgowArtsLogo" class="sponsorLogo">
+          <img class = "bottom" src="images/sponsors/glasgowarts_bg.gif" width="64px" height="53px" />
+          <img class = "top"    src="images/sponsors/glasgowarts_fg.gif" width="64px" height="53px" />
+        </div>
+        <!--
+        <div id="triggerLogo" class="sponsorLogo">
+          <img class = "bottom" src="images/sponsors/trigger_bg.png" width="100px" height="100px" />
+          <img class = "top"    src="images/sponsors/trigger_fg.png" width="100px" height="100px" />
+        </div>
+        -->
+      </div>
+      <!-- The visualisation -->
+      <div id="vis"></div>
+
+      <div id="debugDiv" style="position:absolute; display:none">
+        <p>
+          <!-- debugging range, per min (1440) -->
+          <input type="range" id="timeSlider" onchange="timeslide();" min="0.001" max="0.999" step="0.001" value="0" style="width:512px"/>
+          <span id="currentTime"></span>
+        </p>
+        <p>
+          <span id="locationMsg"></span> <span id="currentLocation"></span>
+        </p>
+      </div>
+    </div>
+    <script>
+      var urlParams = {};
+      (function () {
+        var match,
+            pl     = /\+/g,  // Regex for replacing addition symbol with a space
+            search = /([^&=]+)=?([^&]*)/g,
+            decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+            query  = window.location.search.substring(1);
+
+            while (match = search.exec(query))
+              urlParams[decode(match[1])] = decode(match[2]);
+      })();
+      
+      if ('dbg' in urlParams)
+        document.getElementById('debugDiv').style.display = "block";
+    </script>
+    <script type="text/javascript" src="lib/scale.js"></script>
+    <script type="text/javascript" src="lib/sun.js"></script>
+    <script type="text/javascript" src="content/nodes.js"></script>
+    <script type="text/javascript" src="content/display.js"></script>
+    <script type="text/javascript" src="heliotrope.js"></script>
+
+    <!--
+      Slider stuff for debugging
+    -->
+    <script type="text/javascript" src="lib/device/html5slider.js"></script> 
+    <script>
+      var timeslide = function() {
+        heliotrope.mySun.setTime(parseFloat(document.getElementById('timeSlider').value));
+        return heliotrope.updateTime();
+      }
+    </script>
+  </body>
+</html>
