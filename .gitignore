@@ -1,4 +1,2 @@
-.~lock.*#
-index.html
-content/**/*.html
-content/*.html
+*.html
+!template.html
